@@ -14,4 +14,5 @@ export class GastosService {
     return this.httpClient.get<GastosModel[]>('http://localhost:8080/gastos');
   }
 
+
 }

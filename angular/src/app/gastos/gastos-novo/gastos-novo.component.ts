@@ -30,10 +30,6 @@ export class GastosNovoComponent implements OnInit{
   ngOnInit(): void { }
 
 
-  salvar() {
-
-  }
-
   cancelar() {
 
   }
