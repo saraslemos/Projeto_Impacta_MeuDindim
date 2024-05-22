@@ -10,14 +10,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { GastosNovoComponent } from './gastos-novo/gastos-novo.component';
 import { GastosComponent } from './gastos.component';
+import { GastosListaComponent } from './gastos-lista/gastos-lista.component';
 
 
 
 @NgModule({
-  declarations: [GastosComponent, GastosNovoComponent],
+  declarations: [GastosComponent, GastosNovoComponent, GastosListaComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -29,7 +31,9 @@ import { GastosComponent } from './gastos.component';
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
+
   ]
 })
 export class GastosModule { }

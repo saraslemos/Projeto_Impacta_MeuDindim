@@ -11,6 +11,24 @@ export class GastosNovoService {
 
 
   public adicionar(gasto: Partial<GastosModel>) {
-    this.http.post(`http://localhost:8080/gastos`, gasto).subscribe();
+    return this.http.post(`http://localhost:8080/gastos`, gasto);
+  }
+
+  salvar(gasto: Partial<GastosModel>){
+    //console.log(gasto);
+    if (gasto._id){
+      //console.log('atualizar');
+      return this.atualizar(gasto);
+    }
+    //console.log('criar');
+    return this.criar(gasto);
+  }
+
+  private criar(gasto: Partial<GastosModel>){
+    this.http.post<GastosModel>(`http://localhost:8080/gastos`, gasto);
+  }
+
+  private atualizar(gasto: Partial<GastosModel>){
+    this.http.put<GastosModel>(`${'http://localhost:8080/gastos'}/${gasto._id}`, gasto);
   }
 }

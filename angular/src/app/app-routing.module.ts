@@ -2,11 +2,12 @@ import { GastosNovoComponent } from './gastos/gastos-novo/gastos-novo.component'
 import { GastosComponent } from './gastos/gastos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GastoResolver } from './gastos/guardas/gasto.resolver';
 
 const routes: Routes = [
   {
     path: 'gastos-novo',
-    component: GastosNovoComponent
+    component: GastosNovoComponent, resolve: { gasto: GastoResolver }
   },
   {
     path: 'gastos',
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: '',
     component: GastosComponent
+  },
+  {
+    path: 'edit/:id',
+    component: GastosNovoComponent, resolve: { gasto: GastoResolver }
   }
 ];
 

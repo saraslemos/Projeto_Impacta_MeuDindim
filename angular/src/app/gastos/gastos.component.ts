@@ -12,7 +12,6 @@ import { GastosService } from './service/gastos.service';
 export class GastosComponent implements OnInit{
 
   gastos: GastosModel[] = [];
-  displayedColumns = ['descricao', 'dataInicio', 'dataFim', 'valor', 'acoes'];
 
   constructor(
     private servico: GastosService,
@@ -32,5 +31,8 @@ export class GastosComponent implements OnInit{
     this.roteador.navigate(['/gastos-novo'], {relativeTo: this.rota});
   }
 
+  editar(gasto: GastosModel){
+    this.roteador.navigate(['/edit', gasto._id], {relativeTo: this.rota});
+  }
 
 }

@@ -1,7 +1,7 @@
 export interface GastosModel {
-  id: number;
+  _id: string;
   descricao: string;
-  dataInicio: Date;
-  dataFim: Date;
-  valor: number;
+  dataInicio: string;
+  dataFim: string;
+  valor: string;
  }

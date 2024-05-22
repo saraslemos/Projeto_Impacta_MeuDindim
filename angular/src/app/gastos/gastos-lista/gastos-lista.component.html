@@ -1,0 +1,49 @@
+<mat-table [dataSource]="gastos">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="descricao">
+    <mat-header-cell *matHeaderCellDef>Descrição</mat-header-cell>
+    <mat-cell *matCellDef="let gasto">{{ gasto.descricao }}</mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="dataInicio">
+    <mat-header-cell *matHeaderCellDef>Data Inicial</mat-header-cell>
+    <mat-cell *matCellDef="let gasto">{{ gasto.dataInicio | date : 'dd/MM/yyyy'}}</mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="dataFim">
+    <mat-header-cell *matHeaderCellDef>Data Final</mat-header-cell>
+    <mat-cell *matCellDef="let gasto">{{ gasto.dataFim | date : 'dd/MM/yyyy'}}</mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="valor">
+    <mat-header-cell *matHeaderCellDef>Valor</mat-header-cell>
+    <mat-cell *matCellDef="let gasto">{{ gasto.valor | currency: "R$ " }}</mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef class="action-column-header">
+      <button mat-mini-fab color="accent" aria-label="Adicionar gasto" (click)="adicionar()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let gasto" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Editar gasto" (click)="editar(gasto)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Remover gasto">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

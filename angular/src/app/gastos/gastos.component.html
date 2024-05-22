@@ -3,56 +3,15 @@
 
     <mat-toolbar color="primary">Gastos Cadastrados</mat-toolbar>
 
-    <table mat-table [dataSource]="gastos" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+    <div class="mat-elevation-z8">
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="descricao">
-        <th mat-header-cell *matHeaderCellDef>Descrição</th>
-        <td mat-cell *matCellDef="let gasto">{{ gasto.descricao }}</td>
-      </ng-container>
+    <app-gastos-lista
+      *ngIf="gastos"
+      [gastos]="gastos"
+      (add)="adicionar()"
+      (edit)="editar($event)"
+    ></app-gastos-lista>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="dataInicio">
-        <th mat-header-cell *matHeaderCellDef>Data Inicial</th>
-        <td mat-cell *matCellDef="let gasto">{{ gasto.dataInicio | date : 'dd/MM/yyyy'}}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="dataFim">
-        <th mat-header-cell *matHeaderCellDef>Data Final</th>
-        <td mat-cell *matCellDef="let gasto">{{ gasto.dataFim | date : 'dd/MM/yyyy'}}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="valor">
-        <th mat-header-cell *matHeaderCellDef>Valor</th>
-        <td mat-cell *matCellDef="let gasto">{{ gasto.valor | currency: "R$ " }}</td>
-      </ng-container>
-
-      <!-- Actions Column -->
-      <ng-container matColumnDef="acoes">
-        <mat-header-cell *matHeaderCellDef>
-          <button mat-mini-fab color="primary" aria-label="Adicionar gasto" (click)="adicionar()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-header-cell>
-
-        <mat-cell *matCellDef="let gasto">
-          <button mat-icon-button color="primary" aria-label="Editar gasto">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-icon-button color="warn" aria-label="Remover gasto">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    </div>
   </mat-card-content>
 </mat-card>
