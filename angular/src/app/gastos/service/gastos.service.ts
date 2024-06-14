@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { GastosModel } from './../model/gastos.model';
+import { GastosRelatorioModel } from '../model/gastos-relatorio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,20 @@ export class GastosService {
   }
 
   private criar(gasto: Partial<GastosModel>){
-    this.httpClient.post<GastosModel>(`http://localhost:8080/gastos`, gasto).subscribe();
+    return this.httpClient.post<GastosModel>(`http://localhost:8080/gastos`, gasto).subscribe();
   }
 
   private atualizar(gasto: Partial<GastosModel>){
-    this.httpClient.put<GastosModel>(`${'http://localhost:8080/gastos'}/${gasto._id}`, gasto).subscribe();
+    return this.httpClient.put<GastosModel>(`${'http://localhost:8080/gastos'}/${gasto._id}`, gasto).subscribe();
   }
+
+  deletar(id: String){
+    return this.httpClient.delete(`${'http://localhost:8080/gastos'}/${id}`);
+  }
+
+  gerarRelatorio() {
+    return this.httpClient.get<GastosRelatorioModel>('http://localhost:8080/gastos/gerar-relatorio');
+  }
+
 
 }

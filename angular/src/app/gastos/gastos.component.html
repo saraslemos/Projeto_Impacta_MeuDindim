@@ -1,6 +1,10 @@
 <mat-card>
   <mat-card-content>
 
+    <button mat-raised-button color="primary" (click)="gerarRelatorio()">Gerar relatório</button>
+
+    <br><br>
+
     <mat-toolbar color="primary">Gastos Cadastrados</mat-toolbar>
 
     <div class="mat-elevation-z8">
@@ -10,8 +14,10 @@
       [gastos]="gastos"
       (add)="adicionar()"
       (edit)="editar($event)"
+      (delete)="deletar($event)"
     ></app-gastos-lista>
 
     </div>
   </mat-card-content>
+
 </mat-card>

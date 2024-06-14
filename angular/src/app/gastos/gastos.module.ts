@@ -15,11 +15,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { GastosNovoComponent } from './gastos-novo/gastos-novo.component';
 import { GastosComponent } from './gastos.component';
 import { GastosListaComponent } from './gastos-lista/gastos-lista.component';
+import { GastosRelatorioComponent } from './gastos-relatorio/gastos-relatorio.component';
 
 
 
 @NgModule({
-  declarations: [GastosComponent, GastosNovoComponent, GastosListaComponent],
+  declarations: [GastosComponent, GastosNovoComponent, GastosListaComponent, GastosRelatorioComponent],
   imports: [
     CommonModule,
     MatToolbarModule,

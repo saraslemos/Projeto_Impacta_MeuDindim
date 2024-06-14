@@ -12,6 +12,7 @@ export class GastosListaComponent implements OnInit{
   @Input() gastos: GastosModel[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() delete = new EventEmitter(false);
 
   displayedColumns = ['descricao', 'dataInicio', 'dataFim', 'valor', 'acoes'];
 
@@ -28,6 +29,10 @@ export class GastosListaComponent implements OnInit{
 
   editar(gasto: GastosModel) {
     this.edit.emit(gasto);
+  }
+
+  deletar(gasto: GastosModel){
+    this.delete.emit(gasto);
   }
 
 

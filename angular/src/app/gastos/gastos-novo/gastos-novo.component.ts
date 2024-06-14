@@ -47,12 +47,18 @@ export class GastosNovoComponent implements OnInit{
   }
 
   private sucesso() {
-    this.snackBar.open('Gasto salvo com sucesso!', '', {duration: 5000});
+    this.snackBar.open('Gasto salvo com sucesso!', '', {duration: 5000, 
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
     this.cancelar();
   }
 
   private erro() {
-    this.snackBar.open('Erro ao salvar gasto.', '', {duration: 5000});
+    this.snackBar.open('Erro ao salvar gasto.', '', {duration: 5000, 
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
   }
 
   cancelar() {

@@ -3,6 +3,7 @@ import { GastosComponent } from './gastos/gastos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GastoResolver } from './gastos/guardas/gasto.resolver';
+import { GastosRelatorioComponent } from './gastos/gastos-relatorio/gastos-relatorio.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: GastosNovoComponent, resolve: { gasto: GastoResolver }
+  },
+  {
+    path: 'gastos-relatorio',
+    component: GastosRelatorioComponent
   }
 ];
 
