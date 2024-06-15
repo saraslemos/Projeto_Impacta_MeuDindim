@@ -1,12 +1,16 @@
 package com.controle.gastos.controller;
 
 import com.controle.gastos.model.GastosEntity;
+import com.controle.gastos.model.RelatorioDTO;
 import com.controle.gastos.repository.GastoRepository;
+import com.controle.gastos.service.RelatorioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -16,6 +20,9 @@ public class GastosController {
 
     @Autowired
     private GastoRepository gastoRepository;
+
+    @Autowired
+    private RelatorioService relatorioService;
 
     @GetMapping
     public List<GastosEntity> buscarGastos(){
@@ -50,6 +57,21 @@ public class GastosController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable int id){
+        return gastoRepository.findById(id)
+                .map(registroEncontrado -> {
+                    gastoRepository.deleteById(id);
+                    return ResponseEntity.noContent().<Void>build();
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/gerar-relatorio")
+    public RelatorioDTO gerarRelatorio(){
+        return relatorioService.gerarRelatorio();
+    }
 
 
 }
+
